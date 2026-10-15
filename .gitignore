@@ -1,0 +1,23 @@
+# PR write-ups
+PR-doc*.md
+
+# Nushell history and local state
+history.txt
+history.sqlite3*
+plugin.msgpackz
+
+# Logs and temp files
+*.log
+*.tmp
+*.bak
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
