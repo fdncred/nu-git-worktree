@@ -36,23 +36,23 @@ use ~/src/nu-git-worktree/gwt.nu *
 
 Put that line below any `$env.config = { ... }` assignment. The module adds its abbreviations to `$env.config.abbreviations` when it loads, and assigning a whole new `$env.config` afterwards throws them away.
 
-Import it with `*`. Every command is `gwt` or `gwt <subcommand>`, so `*` can't shadow a builtin such as `move`. Without `*`, Nushell would prefix the aliases with the module name (`gwt wtl`).
+Import it with `*`. Every command is `gwt` or `gwt <subcommand>`, so `*` can't shadow a builtin such as `move`. Without `*`, Nushell would prefix the aliases with the module name (`gwt gwtl`).
 
 ## Commands
 
-| Command                            | Alias                    | Abbreviation           | Returns                                                      |
-| ---------------------------------- | ------------------------ | ---------------------- | ------------------------------------------------------------ |
-| `gwt list [--long]`                | `wtl`, `wtll` (`--long`) |                        | table of worktrees                                           |
-| `gwt status [...worktrees]`        | `wts`                    |                        | table of upstream, ahead/behind, and change counts           |
-| `gwt cd [worktree] [--main]`       | `wtcd`                   |                        | nothing; changes directory                                   |
-| `gwt add <branch> [path]`          |                          | `wta`, `wtac` (`--cd`) | record of the new worktree                                   |
-| `gwt remove ...worktrees`          |                          | `wtrm`                 | table of removed worktrees                                   |
-| `gwt move <worktree> <new_path>`   |                          | `wtmv`                 | record of the moved worktree                                 |
-| `gwt lock <worktree> [--reason]`   |                          | `wtlk`                 | record of the locked worktree                                |
-| `gwt unlock <worktree>`            |                          | `wtul`                 | record of the unlocked worktree                              |
-| `gwt prune [--dry-run] [--expire]` |                          | `wtp`                  | table of pruned worktrees                                    |
-| `gwt repair [...paths]`            |                          |                        | table of repairs                                             |
-| `gwt`                              |                          |                        | table of these commands with their aliases and abbreviations |
+| Command                            | Alias                      | Abbreviation             | Returns                                                      |
+| ---------------------------------- | -------------------------- | ------------------------ | ------------------------------------------------------------ |
+| `gwt list [--long]`                | `gwtl`, `gwtll` (`--long`) |                          | table of worktrees                                           |
+| `gwt status [...worktrees]`        | `gwts`                     |                          | table of upstream, ahead/behind, and change counts           |
+| `gwt cd [worktree] [--main]`       | `gwtcd`                    |                          | nothing; changes directory                                   |
+| `gwt add <branch> [path]`          |                            | `gwta`, `gwtac` (`--cd`) | record of the new worktree                                   |
+| `gwt remove ...worktrees`          |                            | `gwtrm`                  | table of removed worktrees                                   |
+| `gwt move <worktree> <new_path>`   |                            | `gwtmv`                  | record of the moved worktree                                 |
+| `gwt lock <worktree> [--reason]`   |                            | `gwtlk`                  | record of the locked worktree                                |
+| `gwt unlock <worktree>`            |                            | `gwtul`                  | record of the unlocked worktree                              |
+| `gwt prune [--dry-run] [--expire]` |                            | `gwtp`                   | table of pruned worktrees                                    |
+| `gwt repair [...paths]`            |                            |                          | table of repairs                                             |
+| `gwt`                              |                            |                          | table of these commands with their aliases and abbreviations |
 
 An alias runs as soon as you press enter. An abbreviation expands into the full command in the line editor first. [Aliases and abbreviations](#aliases-and-abbreviations) explains the split.
 
@@ -60,27 +60,27 @@ An alias runs as soon as you press enter. An abbreviation expands into the full 
 
 ```nushell
 > gwt
-╭───┬────────────┬───────────┬───────────────┬───────────────────────────────────────────────────────────────────────────────────────╮
-│ # │  command   │  aliases  │ abbreviations │                                      description                                      │
-├───┼────────────┼───────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
-│ 0 │ gwt add    │           │ wta, wtac     │ Create a worktree for a branch and return its row from `gwt list --long`.             │
-│ 1 │ gwt cd     │ wtcd      │               │ Change to a worktree, picked interactively when none is named.                        │
-│ 2 │ gwt list   │ wtl, wtll │               │ List the repository's worktrees, main worktree first.                                 │
-│ 3 │ gwt lock   │           │ wtlk          │ Lock a worktree against prune, move, and remove, and return its updated row.          │
-│ 4 │ gwt move   │           │ wtmv          │ Move a linked worktree to a new directory and return its new row.                     │
-│ 5 │ gwt prune  │           │ wtp           │ Delete git's records of worktrees whose directories are gone, and return them.        │
-│ 6 │ gwt remove │           │ wtrm          │ Remove worktrees, optionally deleting their branches, and return what was removed.    │
-│ 7 │ gwt repair │           │               │ Reconnect worktrees moved by hand, and return each repair git made or could not make. │
-│ 8 │ gwt status │ wts       │               │ Show each worktree's branch, upstream, ahead/behind counts, and changes.              │
-│ 9 │ gwt unlock │           │ wtul          │ Unlock a worktree and return its updated row.                                         │
-╰───┴────────────┴───────────┴───────────────┴───────────────────────────────────────────────────────────────────────────────────────╯
+╭───┬────────────┬─────────────┬───────────────┬───────────────────────────────────────────────────────────────────────────────────────╮
+│ # │  command   │   aliases   │ abbreviations │                                      description                                      │
+├───┼────────────┼─────────────┼───────────────┼───────────────────────────────────────────────────────────────────────────────────────┤
+│ 0 │ gwt add    │             │ gwta, gwtac   │ Create a worktree for a branch and return its row from `gwt list --long`.             │
+│ 1 │ gwt cd     │ gwtcd       │               │ Change to a worktree, picked interactively when none is named.                        │
+│ 2 │ gwt list   │ gwtl, gwtll │               │ List the repository's worktrees, main worktree first.                                 │
+│ 3 │ gwt lock   │             │ gwtlk         │ Lock a worktree against prune, move, and remove, and return its updated row.          │
+│ 4 │ gwt move   │             │ gwtmv         │ Move a linked worktree to a new directory and return its new row.                     │
+│ 5 │ gwt prune  │             │ gwtp          │ Delete git's records of worktrees whose directories are gone, and return them.        │
+│ 6 │ gwt remove │             │ gwtrm         │ Remove worktrees, optionally deleting their branches, and return what was removed.    │
+│ 7 │ gwt repair │             │               │ Reconnect worktrees moved by hand, and return each repair git made or could not make. │
+│ 8 │ gwt status │ gwts        │               │ Show each worktree's branch, upstream, ahead/behind counts, and changes.              │
+│ 9 │ gwt unlock │             │ gwtul         │ Unlock a worktree and return its updated row.                                         │
+╰───┴────────────┴─────────────┴───────────────┴───────────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 Wherever a command takes a worktree, you can name it by path (absolute, or relative to the current directory), by directory name, or by the branch it has checked out. If a name matches more than one worktree, the error lists their paths so you can pick one.
 
 ### gwt list
 
-Columns are `name`, `branch` (null when detached), `head` (abbreviated commit), `committed` (commit date), `current` (contains the current directory), `main`, `locked`, and `prunable`. The path is left out to keep the table narrow. `--long` (alias `wtll`) adds `path`, `commit` (the full id), `subject`, `bare`, `detached`, `lock_reason`, and `prune_reason`.
+Columns are `name`, `branch` (null when detached), `head` (abbreviated commit), `committed` (commit date), `current` (contains the current directory), `main`, `locked`, and `prunable`. The path is left out to keep the table narrow. `--long` (alias `gwtll`) adds `path`, `commit` (the full id), `subject`, `bare`, `detached`, `lock_reason`, and `prune_reason`.
 
 The listing runs three git processes no matter how many worktrees there are: one `git worktree list --porcelain -z`, one `git rev-parse` to find the current worktree, and one `git log --no-walk` for every HEAD's date and subject.
 
@@ -175,27 +175,27 @@ Commands that only read or navigate are aliases. They run as typed and work in p
 
 | Alias (runs on enter) | Runs              |
 | --------------------- | ----------------- |
-| `wtl`                 | `gwt list`        |
-| `wtll`                | `gwt list --long` |
-| `wts`                 | `gwt status`      |
-| `wtcd`                | `gwt cd`          |
+| `gwtl`                | `gwt list`        |
+| `gwtll`               | `gwt list --long` |
+| `gwts`                | `gwt status`      |
+| `gwtcd`               | `gwt cd`          |
 
 Commands that create, change, or delete worktrees are abbreviations. Nushell expands an abbreviation in the line editor when you press space or enter. You see the full command before it runs, you can add flags to it, and history records the full command, not the abbreviation.
 
 | Abbreviation (expands first) | Expands to     |
 | ---------------------------- | -------------- |
-| `wta`                        | `gwt add`      |
-| `wtac`                       | `gwt add --cd` |
-| `wtrm`                       | `gwt remove`   |
-| `wtmv`                       | `gwt move`     |
-| `wtlk`                       | `gwt lock`     |
-| `wtul`                       | `gwt unlock`   |
-| `wtp`                        | `gwt prune`    |
+| `gwta`                       | `gwt add`      |
+| `gwtac`                      | `gwt add --cd` |
+| `gwtrm`                      | `gwt remove`   |
+| `gwtmv`                      | `gwt move`     |
+| `gwtlk`                      | `gwt lock`     |
+| `gwtul`                      | `gwt unlock`   |
+| `gwtp`                       | `gwt prune`    |
 
 `abbr list` shows them. If you already have an abbreviation with one of these names, yours wins. To drop one, remove it below the `use` line:
 
 ```nushell
-$env.config.abbreviations = $env.config.abbreviations | reject wtp
+$env.config.abbreviations = $env.config.abbreviations | reject gwtp
 ```
 
 ## Completions

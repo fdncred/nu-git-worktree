@@ -206,12 +206,12 @@ assert equal (row-named hand-moved).branch fixme
 print 'overview, shortcuts, and externs'
 let overview = gwt
 assert equal ($overview | columns) [command aliases abbreviations description]
-assert equal ($overview | where command == 'gwt list' | first | select aliases abbreviations) {aliases: 'wtl, wtll', abbreviations: ''}
-assert equal ($overview | where command == 'gwt add' | first | select aliases abbreviations) {aliases: '', abbreviations: 'wta, wtac'}
+assert equal ($overview | where command == 'gwt list' | first | select aliases abbreviations) {aliases: 'gwtl, gwtll', abbreviations: ''}
+assert equal ($overview | where command == 'gwt add' | first | select aliases abbreviations) {aliases: '', abbreviations: 'gwta, gwtac'}
 assert equal (scope commands | where name starts-with 'git worktree ' and type == external | length) 8
 let abbrs = abbr list
-assert equal ($abbrs | where name == wtrm | first | get expansion) 'gwt remove'
-let kept = ^$nu.current-exe --no-config-file -c $"$env.config.abbreviations = {wta: 'mine'}; use '($MODULE)' *; abbr list | where name == wta | get 0.expansion" | str trim
+assert equal ($abbrs | where name == gwtrm | first | get expansion) 'gwt remove'
+let kept = ^$nu.current-exe --no-config-file -c $"$env.config.abbreviations = {gwta: 'mine'}; use '($MODULE)' *; abbr list | where name == gwta | get 0.expansion" | str trim
 assert equal $kept mine
 
 print 'completers'

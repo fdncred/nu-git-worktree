@@ -10,14 +10,14 @@
 #     use /path/to/nu-git-worktree/gwt.nu *
 #
 #   command                  shortcut
-#   gwt list [--long]        wtl, wtll    (aliases)
-#   gwt status               wts          (alias)
-#   gwt cd [--main]          wtcd         (alias)
-#   gwt add                  wta, wtac    (abbreviations; wtac adds --cd)
-#   gwt remove               wtrm         (abbreviation)
-#   gwt move                 wtmv         (abbreviation)
-#   gwt lock / unlock        wtlk / wtul  (abbreviations)
-#   gwt prune                wtp          (abbreviation)
+#   gwt list [--long]        gwtl, gwtll    (aliases)
+#   gwt status               gwts           (alias)
+#   gwt cd [--main]          gwtcd          (alias)
+#   gwt add                  gwta, gwtac    (abbreviations; gwtac adds --cd)
+#   gwt remove               gwtrm          (abbreviation)
+#   gwt move                 gwtmv          (abbreviation)
+#   gwt lock / unlock        gwtlk / gwtul  (abbreviations)
+#   gwt prune                gwtp           (abbreviation)
 #   gwt repair
 #
 # Aliases cover the commands that only read or navigate, so they run as typed
@@ -30,13 +30,13 @@
 # get completions from the externs at the end of this file.
 
 const ABBREVIATIONS = {
-    wta: 'gwt add'
-    wtac: 'gwt add --cd'
-    wtrm: 'gwt remove'
-    wtmv: 'gwt move'
-    wtlk: 'gwt lock'
-    wtul: 'gwt unlock'
-    wtp: 'gwt prune'
+    gwta: 'gwt add'
+    gwtac: 'gwt add --cd'
+    gwtrm: 'gwt remove'
+    gwtmv: 'gwt move'
+    gwtlk: 'gwt lock'
+    gwtul: 'gwt unlock'
+    gwtp: 'gwt prune'
 }
 
 export-env {
@@ -626,10 +626,10 @@ export def --env "gwt cd" [
     }
 }
 
-export alias wtl = gwt list
-export alias wtll = gwt list --long
-export alias wts = gwt status
-export alias wtcd = gwt cd
+export alias gwtl = gwt list
+export alias gwtll = gwt list --long
+export alias gwts = gwt status
+export alias gwtcd = gwt cd
 
 # Completions for raw `git worktree` calls. Flags follow git 2.56; nushell
 # passes flags these signatures leave out straight through to git.
